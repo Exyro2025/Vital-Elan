@@ -252,13 +252,36 @@ function getReflectionQuote(landscape) {
   };
   return quotes[landscape] || "Breathe deeply. Be fully here.";
 }
+// Guided Breathing Quotes (Three Variations)
+const guidedBreathingPhrases = [
+  "Close your eyes. Inhale deeply... Hold... Exhale slowly. Feel your body relax.",
+  "Breathe in... Hold gently... Let go with ease. Feel calm flow over you.",
+  "Inhale peace... Exhale tension... Let each breath bring stillness."
+];
 
-// Guided Breathing Function
+// Sound File for Gentle Water Ripple (Soothing Background)
+const guidedBreathingSound = "gentle-water-ripple.mp3"; 
+
+// Function for Enhanced Guided Breathing
 function startGuidedBreathing() {
-  const guide = new SpeechSynthesisUtterance("Close your eyes. Inhale deeply... Hold... Exhale slowly. Feel your body relax.");
+  // Play Water Ripple Sound at Low Volume (Separate Sound Channel)
+  const rippleAudio = new Audio(guidedBreathingSound);
+  rippleAudio.loop = true;
+  rippleAudio.volume = 0.2; // Set low volume for background effect
+  rippleAudio.play();
+
+  // Choose a Random Guided Breathing Phrase
+  const guideText = guidedBreathingPhrases[Math.floor(Math.random() * guidedBreathingPhrases.length)];
+ // Speech Synthesis for Voice Guide
+  const guide = new SpeechSynthesisUtterance(guideText);
   guide.rate = 0.9;
-  guide.volume = 0.8;
+  guide.volume = 0.8; // Clear, calming voice
+
+  // Start Speaking the Guide
   window.speechSynthesis.speak(guide);
+
+  // Stop Background Sound when Breathing Ends
+  guide.onend = () => rippleAudio.pause();
 }
 
 // Voice Interaction Feature
