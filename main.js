@@ -260,15 +260,7 @@ function startGuidedBreathing() {
   guide.volume = 0.8;
   window.speechSynthesis.speak(guide);
 }
- // Play Gentle Water Ripple Sound
-  const rippleAudio = new Audio(guidedBreathingSound);
-  rippleAudio.loop = true;
-  rippleAudio.volume = 0.3;
-  rippleAudio.play();
-  
-  // Stop ripple sound after 60 seconds
-  setTimeout(() => rippleAudio.pause(), 60000);
-}
+
 // Voice Interaction Feature
 function initializeVoiceCommands() {
   if (!('webkitSpeechRecognition' in window)) {
