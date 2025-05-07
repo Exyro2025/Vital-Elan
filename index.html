@@ -25,104 +25,80 @@
   </script>
 
 <style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to bottom, #1f1f24, #2a2a31);
-    color: white;
-    transition: background 1.5s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-
-  .container {
-    width: 95vw;
-    max-width: 800px;
-    background: #1f1f24;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
-    animation: fadeIn 2s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .center {
-    text-align: center;
-  }
-
-  .quote {
-    color: #94a1b2;
-    font-style: italic;
-  }
-
-  .muted {
-    color: #94a1b2;
-    font-style: italic;
-  }
-
-  .fade-in {
-    opacity: 0;
-    animation: fadeIn ease 2s forwards;
-  }
-
-  @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-
-  input, select {
-    width: 100%;
-    padding: 0.75rem;
-    margin-top: 0.5rem;
-    background: #2a2a31;
-    color: white;
-    border: 1px solid #7f5af0;
-    border-radius: 0.5rem;
-    box-sizing: border-box;
-  }
-
-  button {
-    background: #7f5af0;
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    margin-top: 1.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-
-  button:hover {
-    background: #6b4bd8;
-  }
-
-  .entry {
-    background: #2a2a31;
-    padding: 1rem;
-    border-radius: 0.75rem;
-    margin-bottom: 1rem;
-  }
-
-  .tag {
-    background-color: #2cb67d;
-    color: black;
-    font-size: 0.75rem;
-    padding: 0.25rem 0.75rem;
-    border-radius: 999px;
-    display: inline-block;
-    margin-top: 0.5rem;
-  }
-
-  .date {
-    font-size: 0.8rem;
-    color: #94a1b2;
-  }
+body {
+      margin: 0;
+      padding: 2rem;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #1f1f24, #2a2a31);
+      color: white;
+      transition: background 1.5s ease;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #1f1f24;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      animation: fadeIn 2s ease;
+    }
+    .center {
+      text-align: center;
+    }
+    .quote {
+      color: #94a1b2;
+      font-style: italic;
+    }
+    .muted {
+      color: #94a1b2;
+      font-style: italic;
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn ease 2s forwards;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    input, select {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      background: #2a2a31;
+      color: white;
+      border: 1px solid #7f5af0;
+      border-radius: 0.5rem;
+    }
+    button {
+      background: #7f5af0;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .entry {
+      background: #2a2a31;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .tag {
+      background-color: #2cb67d;
+      color: black;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+    .date {
+      font-size: 0.8rem;
+      color: #94a1b2;
+    }
 </style>
 
 </head>
