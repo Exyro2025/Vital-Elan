@@ -29,6 +29,15 @@ const soundMap = {
   "midnight sky": "vital-elan-midnight-sky.mp3",
   "blooming orchard": "vital-elan-blooming-orchard.mp3"
 };
+ // Guided Breathing Quotes (Three Variations)
+const guidedBreathingPhrases = [
+  "Close your eyes. Inhale deeply... Hold... Exhale slowly. Feel your body relax.",
+  "Breathe in... Hold gently... Let go with ease. Feel calm flow over you.",
+  "Inhale peace... Exhale tension... Let each breath bring stillness."
+];
+
+// Sound File for Gentle Water Ripple (Soothing Background)
+const guidedBreathingSound = "gentle-water-ripple.mp3"; 
 
   const dailyQuotes = [
   "Your stillness is a form of power.",
@@ -258,12 +267,7 @@ function startGuidedBreathing() {
   guide.volume = 0.8;
   window.speechSynthesis.speak(guide);
 }
-// Guided Breathing Quotes (Three Variations)
-const guidedBreathingPhrases = [
-  "Close your eyes. Inhale deeply... Hold... Exhale slowly. Feel your body relax.",
-  "Breathe in... Hold gently... Let go with ease. Feel calm flow over you.",
-  "Inhale peace... Exhale tension... Let each breath bring stillness."
-];
+
 
 // Voice Interaction Feature
 function initializeVoiceCommands() {
