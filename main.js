@@ -224,6 +224,28 @@ function stopAllSounds() {
   });
   audioLayers = [];
 }
+// Function for Enhanced Guided Breathing
+function startGuidedBreathing() {
+  // Play Water Ripple Sound at Low Volume (Separate Sound Channel)
+  const rippleAudio = new Audio(guidedBreathingSound);
+  rippleAudio.loop = true;
+  rippleAudio.volume = 0.2; // Set low volume for background effect
+  rippleAudio.play();
+
+  // Choose a Random Guided Breathing Phrase
+  const guideText = guidedBreathingPhrases[Math.floor(Math.random() * guidedBreathingPhrases.length)];
+
+  // Speech Synthesis for Voice Guide
+  const guide = new SpeechSynthesisUtterance(guideText);
+  guide.rate = 0.9;
+  guide.volume = 0.8; // Clear, calming voice
+
+  // Start Speaking the Guide
+  window.speechSynthesis.speak(guide);
+
+  // Stop Background Sound when Breathing Ends
+  guide.onend = () => rippleAudio.pause();
+}
 
 function setVolume(newVolume) {
   volume = newVolume;
