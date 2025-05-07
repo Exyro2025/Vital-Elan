@@ -32,6 +32,40 @@ const soundMap = {
   "blooming orchard": "vital-elan-blooming-orchard.mp3"
 };
 
+  const dailyQuotes = [
+  "Your stillness is a form of power.",
+  "Let today unfold with intention, not urgency.",
+  "Inhale peace. Exhale resistance.",
+  "You are allowed to glow quietly.",
+  "The body speaks. Honor its language.",
+  "Softness is not weakness. It is grace with depth.",
+  "You do not need to rush your becoming.",
+  "Beneath the noise, your rhythm remains.",
+  "This moment is not behind or ahead — it is within.",
+  "Simplicity is a sacred form of wisdom.",
+  "Your breath is your anchor and your inheritance.",
+  "Let silence become your second skin.",
+  "Joy does not always raise its voice.",
+  "Trust the pace of your unfolding.",
+  "There is wonder in restraint.",
+  "Not all clarity is loud. Some whispers are holy.",
+  "Stillness is not the absence of motion — it is the return of meaning.",
+  "Move slower than the world expects. Move truer than it demands.",
+  "Some peace is too deep to name.",
+  "Your softness is allowed to stay.",
+  "There is a rhythm in you that answers to quiet.",
+  "You are whole even when healing.",
+  "Beauty lives in how you breathe through things.",
+  "You are not behind — you are beneath.",
+  "The sacred often arrives without applause.",
+  "Let quiet become your teacher.",
+  "You deserve mornings without proving.",
+  "There is no prize for running past yourself.",
+  "Still waters reflect truest.",
+  "Light returns — even through a crack.",
+  "You are already aligned. Simply return."
+];
+
 // Core Functions
 function render() {
   if (step === 0) renderLanding();
