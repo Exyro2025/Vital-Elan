@@ -37,6 +37,7 @@
       padding: 2rem;
       border-radius: 1rem;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      animation: fadeIn 2s ease;
     }
     .center {
       text-align: center;
@@ -76,13 +77,6 @@
       font-size: 1rem;
       cursor: pointer;
     }
-    <!-- Volume Control Slider -->
-<div class="center">
-  <label for="volumeControl" class="muted">Volume Control</label>
-  <input type="range" id="volumeControl" min="0" max="1" step="0.05" value="0.5" 
-         onchange="setVolume(this.value)" style="width: 80%;">
-</div>
-
     .entry {
       background: #2a2a31;
       padding: 1rem;
@@ -102,26 +96,18 @@
       font-size: 0.8rem;
       color: #94a1b2;
     }
-    <style>
-  body {
-    background: linear-gradient(to bottom, #1f1f24, #2a2a31);
-    transition: background 2s ease;
-  }
-
-  .container {
-    animation: fadeIn 2s ease;
-  }
-
-  @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-</style>
-
   </style>
 </head>
 <body>
-  <div id="root"></div>
+  <div id="root" class="container">
+    <!-- Volume Control Slider -->
+    <div class="center">
+      <label for="volumeControl" class="muted">Volume Control</label>
+      <input type="range" id="volumeControl" min="0" max="1" step="0.05" value="0.5" 
+             onchange="setVolume(this.value)" style="width: 80%;">
+    </div>
+  </div>
   <script src="main.js"></script>
 </body>
 </html>
+
