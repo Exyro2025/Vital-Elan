@@ -27,8 +27,10 @@ const soundMap = {
   "shadowed canyon": "vital-elan-shadowed-canyon.mp3",
   "frosted peak": "vital-elan-frosted-peak.mp3",
   "midnight sky": "vital-elan-midnight-sky.mp3",
-  "blooming orchard": "vital-elan-blooming-orchard.mp3"
+  "blooming orchard": "vital-elan-blooming-orchard.mp3",
 };
+  // Add Gentle Water Ripple Sound for Guided Breathing
+const guidedBreathingSound = "gentle-water-ripple.mp3";
 
   const dailyQuotes = [
   "Your stillness is a form of power.",
@@ -257,6 +259,15 @@ function startGuidedBreathing() {
   guide.rate = 0.9;
   guide.volume = 0.8;
   window.speechSynthesis.speak(guide);
+}
+ // Play Gentle Water Ripple Sound
+  const rippleAudio = new Audio(guidedBreathingSound);
+  rippleAudio.loop = true;
+  rippleAudio.volume = 0.3;
+  rippleAudio.play();
+  
+  // Stop ripple sound after 60 seconds
+  setTimeout(() => rippleAudio.pause(), 60000);
 }
 // Voice Interaction Feature
 function initializeVoiceCommands() {
