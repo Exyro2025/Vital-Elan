@@ -184,6 +184,131 @@ function closeRitual() {
   render();
   alert("The breath you carry now belongs to you.");
 }
+// Sound Enhancement – Multi-Layered 3D Sound with Volume Control
+let audioLayers = [];
+let volume = 0.5; // Default Volume
+
+function playSound() {
+  const entry = ledger[0];
+  const src = soundMap[entry.landscape];
+  if (!src) return;
+
+  try {
+    stopAllSounds(); // Ensure no existing sounds overlap
+
+    // Create multiple layers for immersive sound
+    const sounds = [src, src]; // Add the same sound twice for 3D effect (or add different sounds)
+    sounds.forEach((soundSrc) => {
+      const audio = new Audio(soundSrc);
+      audio.volume = volume;
+      audio.loop = true;
+      audio.play();
+      audioLayers.push(audio);
+    });
+  } catch (e) {
+    console.warn("Audio playback error:", e);
+  }
+}
+
+function stopAllSounds() {
+  audioLayers.forEach((audio) => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+  audioLayers = [];
+}
+
+function setVolume(newVolume) {
+  volume = newVolume;
+  audioLayers.forEach((audio) => {
+    audio.volume = volume;
+  });
+}
+function renderReflection() {
+  const entry = ledger[0];
+  const scripture = scriptureMap[entry.landscape];
+  const reflectionQuote = getReflectionQuote(entry.landscape);
+  
+  document.body.style.background = "#1f1f24";
+  root.innerHTML = `
+    <div class="container center">
+      <p class="quote">"${entry.reflection}"</p>
+      ${scripture ? `<p class="quote">“${scripture.verse}”<br /><small>— ${scripture.ref}</small></p>` : ""}
+      <p class="muted">${reflectionQuote}</p>
+      <button onclick="playSound()">Begin Resonance Ritual</button>
+      <button onclick="startGuidedBreathing()">Guided Breathing</button>
+    </div>
+  `;
+}
+
+// New Function for Mood-Adaptive Quotes
+function getReflectionQuote(landscape) {
+  const quotes = {
+    "misty forest": "Embrace the mist, for clarity waits within.",
+    "sunlit valley": "Let the light refresh your spirit.",
+    "stormy coast": "Waves may roar, but you are anchored.",
+    "still lake": "Peace is not a place — it is a presence.",
+    "crimson desert": "Even in dryness, there is hidden strength.",
+  };
+  return quotes[landscape] || "Breathe deeply. Be fully here.";
+}
+
+// Guided Breathing Function
+function startGuidedBreathing() {
+  const guide = new SpeechSynthesisUtterance("Close your eyes. Inhale deeply... Hold... Exhale slowly. Feel your body relax.");
+  guide.rate = 0.9;
+  guide.volume = 0.8;
+  window.speechSynthesis.speak(guide);
+}
+// Voice Interaction Feature
+function initializeVoiceCommands() {
+  if (!('webkitSpeechRecognition' in window)) {
+    alert("Voice recognition not supported in this browser.");
+    return;
+  }
+
+  const recognition = new webkitSpeechRecognition();
+  recognition.continuous = false;
+  recognition.interimResults = false;
+  recognition.lang = "en-US";
+
+  recognition.onresult = function(event) {
+    const command = event.results[0][0].transcript.toLowerCase();
+    if (command.includes("begin my ritual")) render();
+    if (command.includes("play sound")) playSound();
+    if (command.includes("stop sound")) stopAllSounds();
+  };
+
+  recognition.start();
+}
+
+document.addEventListener("DOMContentLoaded", initializeVoiceCommands);
+function renderLedger() {
+  const entries = ledger.map(e => `
+    <div class="entry">
+      <div class="entry-top">
+        <span class="tag">${e.date}</span>
+        <p><strong>${e.color}</strong> - ${e.landscape}</p>
+        <p class="quote">"${e.reflection}"</p>
+      </div>
+    </div>
+  `).join('');
+
+  root.innerHTML = `
+    <div class="container">
+      <h2>Élan Ledger</h2>
+      ${entries || "<p class='muted'>No entries yet. Begin a reflection to start.</p>"}
+      <button onclick="step = 1; render()">New Reflection</button>
+      <button onclick="clearLedger()">Clear Ledger</button>
+    </div>
+  `;
+}
+
+function clearLedger() {
+  ledger = [];
+  render();
+}
+
 
 // Initialize App
 document.addEventListener("DOMContentLoaded", render);
