@@ -258,6 +258,13 @@ function startGuidedBreathing() {
   guide.volume = 0.8;
   window.speechSynthesis.speak(guide);
 }
+// Guided Breathing Quotes (Three Variations)
+const guidedBreathingPhrases = [
+  "Close your eyes. Inhale deeply... Hold... Exhale slowly. Feel your body relax.",
+  "Breathe in... Hold gently... Let go with ease. Feel calm flow over you.",
+  "Inhale peace... Exhale tension... Let each breath bring stillness."
+];
+
 // Voice Interaction Feature
 function initializeVoiceCommands() {
   if (!('webkitSpeechRecognition' in window)) {
