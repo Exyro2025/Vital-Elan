@@ -1,4 +1,3 @@
-let
 let step = 0;
 let ledger = [];
 let audio = null;
