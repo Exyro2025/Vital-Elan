@@ -224,7 +224,7 @@ function stopAllSounds() {
   });
   audioLayers = [];
 }
-// Function for Enhanced Guided Breathing
+// Function for Enhanced Guided Breathing (Randomized Phrases)
 function startGuidedBreathing() {
   // Play Water Ripple Sound at Low Volume (Separate Sound Channel)
   const rippleAudio = new Audio(guidedBreathingSound);
@@ -232,20 +232,24 @@ function startGuidedBreathing() {
   rippleAudio.volume = 0.2; // Set low volume for background effect
   rippleAudio.play();
 
-  // Choose a Random Guided Breathing Phrase
+  // Randomly Select One of the Three Guided Breathing Phrases
   const guideText = guidedBreathingPhrases[Math.floor(Math.random() * guidedBreathingPhrases.length)];
 
+  // Clear Any Existing Speech to Prevent Overlap
+  window.speechSynthesis.cancel();
+  
   // Speech Synthesis for Voice Guide
   const guide = new SpeechSynthesisUtterance(guideText);
   guide.rate = 0.9;
   guide.volume = 0.8; // Clear, calming voice
 
-  // Start Speaking the Guide
+  // Start Speaking the Randomly Selected Guide
   window.speechSynthesis.speak(guide);
 
   // Stop Background Sound when Breathing Ends
   guide.onend = () => rippleAudio.pause();
 }
+
 
 function setVolume(newVolume) {
   volume = newVolume;
