@@ -1,3 +1,5 @@
+// main.js — Complete, Polished Vital Élan Build (Optimized)
+let
 let step = 0;
 let ledger = [];
 let audio = null;
