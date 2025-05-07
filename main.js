@@ -27,10 +27,8 @@ const soundMap = {
   "shadowed canyon": "vital-elan-shadowed-canyon.mp3",
   "frosted peak": "vital-elan-frosted-peak.mp3",
   "midnight sky": "vital-elan-midnight-sky.mp3",
-  "blooming orchard": "vital-elan-blooming-orchard.mp3",
+  "blooming orchard": "vital-elan-blooming-orchard.mp3"
 };
-  // Add Gentle Water Ripple Sound for Guided Breathing
-const guidedBreathingSound = "gentle-water-ripple.mp3";
 
   const dailyQuotes = [
   "Your stillness is a form of power.",
@@ -252,31 +250,14 @@ function getReflectionQuote(landscape) {
   };
   return quotes[landscape] || "Breathe deeply. Be fully here.";
 }
-// Guided Breathing Quotes (Three Variations)
-const guidedBreathingPhrases = [
-  "Close your eyes. Inhale deeply... Hold... Exhale slowly. Feel your body relax.",
-  "Breathe in... Hold gently... Let go with ease. Feel calm flow over you.",
-  "Inhale peace... Exhale tension... Let each breath bring stillness."
-];
 
-// Sound File for Gentle Water Ripple (Soothing Background)
-const guidedBreathingSound = "gentle-water-ripple.mp3"; 
-
-
-  // Choose a Random Guided Breathing Phrase
-  const guideText = guidedBreathingPhrases[Math.floor(Math.random() * guidedBreathingPhrases.length)];
- // Speech Synthesis for Voice Guide
-  const guide = new SpeechSynthesisUtterance(guideText);
+// Guided Breathing Function
+function startGuidedBreathing() {
+  const guide = new SpeechSynthesisUtterance("Close your eyes. Inhale deeply... Hold... Exhale slowly. Feel your body relax.");
   guide.rate = 0.9;
-  guide.volume = 0.8; // Clear, calming voice
-
-  // Start Speaking the Guide
+  guide.volume = 0.8;
   window.speechSynthesis.speak(guide);
-
-  // Stop Background Sound when Breathing Ends
-  guide.onend = () => rippleAudio.pause();
 }
-
 // Voice Interaction Feature
 function initializeVoiceCommands() {
   if (!('webkitSpeechRecognition' in window)) {
