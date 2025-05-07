@@ -262,13 +262,6 @@ const guidedBreathingPhrases = [
 // Sound File for Gentle Water Ripple (Soothing Background)
 const guidedBreathingSound = "gentle-water-ripple.mp3"; 
 
-// Function for Enhanced Guided Breathing
-function startGuidedBreathing() {
-  // Play Water Ripple Sound at Low Volume (Separate Sound Channel)
-  const rippleAudio = new Audio(guidedBreathingSound);
-  rippleAudio.loop = true;
-  rippleAudio.volume = 0.2; // Set low volume for background effect
-  rippleAudio.play();
 
   // Choose a Random Guided Breathing Phrase
   const guideText = guidedBreathingPhrases[Math.floor(Math.random() * guidedBreathingPhrases.length)];
